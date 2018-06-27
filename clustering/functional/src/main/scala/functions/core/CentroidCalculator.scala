@@ -43,6 +43,5 @@ object CentroidCalculator {
         sum._1 / numberOfPoints,
         sum._2 / numberOfPoints,
         sum._3 / numberOfPoints)
-
     }
 }
