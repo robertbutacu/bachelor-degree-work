@@ -1,13 +1,13 @@
 package com.graduation.oop.space;
 
-import com.graduation.oop.point.Point;
+import com.graduation.oop.point.UnidimensionalPoint;
 
 import java.util.List;
 
-public class UnidimensionalSpace<A extends Number, Y extends Point> implements Space<A, Y> {
-    private List<Y> points;
+public class UnidimensionalSpace<A extends Number> implements Space<A, UnidimensionalPoint<A>> {
+    private List<UnidimensionalPoint<A>> points;
 
-    public UnidimensionalSpace(List<Y> points) {
+    public UnidimensionalSpace(List<UnidimensionalPoint<A>> points) {
         this.points = points;
     }
 
@@ -16,7 +16,7 @@ public class UnidimensionalSpace<A extends Number, Y extends Point> implements S
     }
 
     @Override
-    public List<Y> points() {
-        return null;
+    public List<UnidimensionalPoint<A>> points() {
+        return points;
     }
 }

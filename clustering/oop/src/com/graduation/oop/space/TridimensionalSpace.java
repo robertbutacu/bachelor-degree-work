@@ -1,23 +1,23 @@
 package com.graduation.oop.space;
 
-import com.graduation.oop.point.Point;
+import com.graduation.oop.point.TridimensionalPoint;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TridimensionalSpace<A extends Number, Y extends Point> implements Space<A, Y> {
-    public List<Y> points;
+public class TridimensionalSpace<A extends Number> implements Space<A, TridimensionalPoint<A>> {
+    private List<TridimensionalPoint<A>> points;
 
-    public TridimensionalSpace(List<Y> points) {
+    public TridimensionalSpace(List<TridimensionalPoint<A>> points) {
         this.points = points;
     }
 
     public TridimensionalSpace() {
-        this.points = new ArrayList<Y>();
+        this.points = new ArrayList<TridimensionalPoint<A>>();
     }
 
     @Override
-    public List<Y> points() {
-        return null;
+    public List<TridimensionalPoint<A>> points() {
+        return points;
     }
 }
