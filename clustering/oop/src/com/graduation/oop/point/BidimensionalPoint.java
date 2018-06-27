@@ -15,4 +15,12 @@ public class BidimensionalPoint<A extends Number> implements Point<A> {
     public String name() {
         return name;
     }
+
+    public Double getX() {
+        return X.doubleValue();
+    }
+
+    public Double getY() {
+        return Y.doubleValue();
+    }
 }

@@ -17,4 +17,16 @@ public class TridimensionalPoint<A extends Number> implements Point<A> {
     public String name() {
         return this.name;
     }
+
+    public Double getX() {
+        return X.doubleValue();
+    }
+
+    public Double getY() {
+        return Y.doubleValue();
+    }
+
+    public Double getZ() {
+        return Z.doubleValue();
+    }
 }

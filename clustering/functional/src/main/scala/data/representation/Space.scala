@@ -1,4 +1,4 @@
-package data
+package data.representation
 
 trait Space[A, P[_]] {
   def points: List[P[A]]

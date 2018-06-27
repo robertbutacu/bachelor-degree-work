@@ -1,4 +1,4 @@
-package data
+package data.representation
 
 trait Point[A] {
   def name: String
