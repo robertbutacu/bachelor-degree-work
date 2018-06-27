@@ -1,5 +1,6 @@
-package data
+package functions.core
 
+import data._
 import data.representation.{BidimensionalPoint, TridimensionalPoint, UnidimensionalPoint}
 
 trait DistanceCalculator[A, P[_], D] {
