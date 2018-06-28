@@ -1,9 +1,7 @@
 package com.graduation.oop;
 
-import com.graduation.oop.point.BidimensionalPoint;
-import com.graduation.oop.point.UnidimensionalPoint;
-import com.graduation.oop.space.BidimensionalSpace;
-import com.graduation.oop.space.UnidimensionalSpace;
+import com.graduation.oop.point.impl.UnidimensionalPoint;
+import com.graduation.oop.space.impl.UnidimensionalSpace;
 
 import java.util.ArrayList;
 import java.util.List;

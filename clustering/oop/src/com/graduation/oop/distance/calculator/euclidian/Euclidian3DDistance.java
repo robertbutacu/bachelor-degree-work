@@ -1,7 +1,7 @@
 package com.graduation.oop.distance.calculator.euclidian;
 
 import com.graduation.oop.distance.calculator.DistanceCalculator;
-import com.graduation.oop.point.TridimensionalPoint;
+import com.graduation.oop.point.impl.TridimensionalPoint;
 
 public class Euclidian3DDistance implements DistanceCalculator<Double, TridimensionalPoint<Double>> {
 

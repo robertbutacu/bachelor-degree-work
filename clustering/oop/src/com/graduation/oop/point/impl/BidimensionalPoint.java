@@ -1,4 +1,6 @@
-package com.graduation.oop.point;
+package com.graduation.oop.point.impl;
+
+import com.graduation.oop.point.Point;
 
 public class BidimensionalPoint<A extends Number> implements Point<A> {
     private A X;
