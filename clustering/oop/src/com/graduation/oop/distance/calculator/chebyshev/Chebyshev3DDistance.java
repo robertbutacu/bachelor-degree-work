@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Chebyshev3DDistance implements DistanceCalculator<Double, TridimensionalPoint<Double>> {
+public class Chebyshev3DDistance implements DistanceCalculator<Double, TridimensionalPoint> {
     @Override
-    public Double computeDistance(TridimensionalPoint<Double> A, TridimensionalPoint<Double> B) {
+    public Double computeDistance(TridimensionalPoint A, TridimensionalPoint B) {
         List<Double> values = new ArrayList<>();
         Double XDistance = Math.abs(A.getX() - B.getX());
         Double YDistance = Math.abs(A.getY() - B.getY());

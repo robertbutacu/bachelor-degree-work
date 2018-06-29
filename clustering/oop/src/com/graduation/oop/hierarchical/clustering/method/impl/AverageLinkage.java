@@ -8,9 +8,12 @@ import com.graduation.oop.point.Point;
 
 import java.util.List;
 
-public class AverageLinkage<P extends Point<Double>> implements ClusteringMethod<P>{
+public class AverageLinkage implements ClusteringMethod{
     @Override
-    public NewCluster<P> formCluster(List<Cluster<P>> clusters, DistanceCalculator distanceCalculator) {
+    public NewCluster formCluster(List<Cluster> clusters, DistanceCalculator distanceCalculator) {
+
+
+
         return null;
     }
 }

@@ -5,11 +5,11 @@ import com.graduation.oop.point.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClusterBuilder<P extends Point<Double>> {
-    private List<P> points;
+public class ClusterBuilder {
+    private List<Point<Double>> points;
     private int creationIndex = 0;
-    private Cluster<P> leftCluster;
-    private Cluster<P> rightCluster;
+    private Cluster leftCluster;
+    private Cluster rightCluster;
 
     public ClusterBuilder() {
         this.points = new ArrayList<>();
@@ -17,30 +17,30 @@ public class ClusterBuilder<P extends Point<Double>> {
         this.rightCluster = null;
     }
 
-    public ClusterBuilder<P> withPoints(List<P> points) {
+    public ClusterBuilder withPoints(List<Point<Double>> points) {
         this.points = points;
         return this;
     }
 
-    public ClusterBuilder<P> withCreationIndex(int creationIndex) {
+    public ClusterBuilder withCreationIndex(int creationIndex) {
         this.creationIndex = creationIndex;
         return this;
     }
 
-    public ClusterBuilder<P> withLeftCluster(Cluster<P> leftCluster) {
+    public ClusterBuilder withLeftCluster(Cluster leftCluster) {
         this.leftCluster = leftCluster;
 
         return this;
     }
 
-    public ClusterBuilder<P> withRightCluster(Cluster<P> rightCluster) {
+    public ClusterBuilder withRightCluster(Cluster rightCluster) {
         this.rightCluster = rightCluster;
 
         return this;
     }
 
-    public Cluster<P> build() {
-        return new Cluster<>(points, creationIndex, leftCluster, rightCluster);
+    public Cluster build() {
+        return new Cluster(points, creationIndex, leftCluster, rightCluster);
     }
 
 }
