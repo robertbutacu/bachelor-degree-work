@@ -2,7 +2,7 @@ package functions.hierarchical.clustering.method
 
 import data.representation.{Cluster, NewCluster}
 import functions.core.DistanceCalculator
-import functions.core.CentroidCalculator.ops.CentroidOps
+import functions.core.CentroidCalculator.ops._
 
 object Methods {
   implicit def singleLinkageMethod[A: Numeric, P[_], D]: Method[A, P, D, SingleLinkage] = new Method[A, P, D, SingleLinkage] {

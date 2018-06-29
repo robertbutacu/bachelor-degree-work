@@ -1,10 +1,11 @@
 package data.representation
 
-case class Cluster[A: Numeric, P[_] <: Point[_]](points: List[P[A]],
+case class Cluster[A: Numeric, P[_]](points: List[P[A]],
                                                  creationIndex: Int = 0,
                                                  leftCluster: Option[Cluster[A, P]] = None,
                                                  rightCluster: Option[Cluster[A, P]] = None) {
-  val name: String = points.foldLeft("")((res, p) => res + " " + p.name)
+  //TODO add name
+  val name: String = points.foldLeft("")((res, p) => res + " ")
 
   def prettyPrinter(): Unit = {
     def go(curr: Cluster[A, P], tabs: Int = 0): Unit = {

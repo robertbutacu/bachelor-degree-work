@@ -1,6 +1,6 @@
 package functions.core
 
-import data.representation.{BidimensionalPoint, Cluster, TridimensionalPoint, UnidimensionalPoint}
+import data.representation._
 
 trait CentroidCalculator[A, P[_], C[_, _[_]]] {
   def computeCentroid(cluster: C[A, P]): P[A]
@@ -8,12 +8,24 @@ trait CentroidCalculator[A, P[_], C[_, _[_]]] {
 
 object CentroidCalculator {
   object ops {
+    /*implicit class CentroidOpsUni(cluster: Cluster[Double, UnidimensionalPoint]) {
+      def computeCentroid(): UnidimensionalPoint[Double] = CentroidCalculator[Double, UnidimensionalPoint, Cluster].computeCentroid(cluster)
+    }
+
+    implicit class CentroidOpsBi(cluster: Cluster[Double, BidimensionalPoint]) {
+      def computeCentroid(): BidimensionalPoint[Double] = CentroidCalculator[Double, BidimensionalPoint, Cluster].computeCentroid(cluster)
+    }
+
+    implicit class CentroidOpsTri(cluster: Cluster[Double, TridimensionalPoint]) {
+      def computeCentroid(): TridimensionalPoint[Double] = CentroidCalculator[Double, TridimensionalPoint, Cluster].computeCentroid(cluster)
+    }*/
+
     implicit class CentroidOps[A: Numeric, P[_]](cluster: Cluster[A, P]) {
-      def computeCentroid(): P[A] = CentroidCalculator[A, P].computeCentroid(cluster)
+      def computeCentroid(): P[A] = implicitly[CentroidCalculator[A, P, Cluster]].computeCentroid(cluster)
     }
   }
 
-  def apply[A: Numeric, P[_]](implicit cc: CentroidCalculator[A, P, Cluster]) = cc
+  def apply[A, P[_], C[_, _[_]]](implicit cc: CentroidCalculator[A, P, C]): CentroidCalculator[A, P, C] = cc
 
   implicit def unidimensionalPointsCentroid: CentroidCalculator[Double, UnidimensionalPoint, Cluster] =
     (cluster: Cluster[Double, UnidimensionalPoint]) => {
