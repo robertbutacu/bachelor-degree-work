@@ -33,21 +33,12 @@ object Methods {
                              distanceType: D,
                              methodType: AverageLinkage)
                             (implicit distance: DistanceCalculator[A, P, D]): NewCluster[A, P] = {
-      def createCentroid(cluster: Cluster[A, P]): P[A] = {
-        cluster.computeCentroid()
-      }
-
-      def computeDistance(from: (Cluster[A, P], P[A]),
-                          to: (Cluster[A, P], P[A]))
-                         (implicit distance: DistanceCalculator[A, P, D]): A =
-        distance.computeDistance(from._2, to._2, distanceType)
-
-      val clustersWithCentroids = clusters zip (clusters map createCentroid)
+      val clustersWithCentroids = clusters zip (clusters map {c => c.computeCentroid()})
 
       val possibleClusters = for {
         from <- clustersWithCentroids
         to <- clustersWithCentroids filterNot (_ == from)
-      } yield (from, to, computeDistance(from, to))
+      } yield (from, to, distance.computeDistance(from._2, to._2, distanceType))
 
       val nextCluster = possibleClusters.minBy(_._3)
       NewCluster[A, P](nextCluster._1._1, nextCluster._2._1, nextCluster._3)
