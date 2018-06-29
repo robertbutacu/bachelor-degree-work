@@ -2,18 +2,18 @@ package functions.hierarchical.clustering
 
 import data.representation.{Cluster, NewCluster}
 import functions.core.{CentroidCalculator, DistanceCalculator}
-import functions.hierarchical.clustering.method.Method
-
+import functions.hierarchical.clustering.method.{Method, MethodType}
+import Method.ops.MethodOps
 import scala.annotation.tailrec
 
 object ClusteringAlgorithm {
   def clusterize[A: Numeric, P[_], D](clusters: List[Cluster[A, P]],
                                       distanceType: D,
-                                      method: Method)
+                                      method: MethodType)
                                      (implicit distance: DistanceCalculator[A, P, D]): Cluster[A, P] = {
     @tailrec
     def go(clusters: List[Cluster[A, P]],
-           method: Method,
+           method: MethodType,
            currentIndex: Int = 0)(implicit distance: DistanceCalculator[A, P, D]): Cluster[A, P] = {
       if (clusters.size == 1)
         clusters.head
