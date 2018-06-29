@@ -1,5 +1,6 @@
 package functions.hierarchical.clustering.method
 
+import Methods._
 import data.representation.{Cluster, NewCluster}
 import functions.core.{CentroidCalculator, DistanceCalculator}
 
@@ -13,4 +14,17 @@ trait Method[A, P[_], D, M] {
 
 object Method {
 
+  object ops {
+
+    implicit class MethodOps(method: MethodType) {
+      def formCluster[A, P[_], D](clusters: List[Cluster[A, P]], distanceType: D)
+                                 (implicit distance: DistanceCalculator[A, P, D],
+                                  centroidCalculator: CentroidCalculator[A, P, Cluster]): NewCluster[A, P] = {
+        Method[A, P, D, MethodType].formCluster(clusters, distanceType, method)
+      }
+    }
+
+  }
+
+  def apply[A, P[_], D, M](implicit method: Method[A, P, D, M]) = method
 }
