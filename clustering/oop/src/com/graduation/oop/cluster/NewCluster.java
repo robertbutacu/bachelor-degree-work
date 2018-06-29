@@ -16,6 +16,10 @@ public class NewCluster {
         this.distanceBetween = distanceBetween;
     }
 
+    public NewCluster(){
+
+    }
+
     public Cluster createCluster(int creationIndex ){
         List<Point<Double>> points = new ArrayList<>(firstCluster.getPoints());
         points.addAll(secondCluster.getPoints());
@@ -27,5 +31,9 @@ public class NewCluster {
                 .withPoints(points);
 
         return cb.build();
+    }
+
+    public Double getDistanceBetween(){
+        return this.distanceBetween;
     }
 }

@@ -6,19 +6,19 @@ import com.graduation.oop.space.Space;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TridimensionalSpace implements Space<TridimensionalPoint<Double>> {
-    private List<TridimensionalPoint<Double>> points;
+public class TridimensionalSpace implements Space<TridimensionalPoint> {
+    private List<TridimensionalPoint> points;
 
-    public TridimensionalSpace(List<TridimensionalPoint<Double>> points) {
+    public TridimensionalSpace(List<TridimensionalPoint> points) {
         this.points = points;
     }
 
     public TridimensionalSpace() {
-        this.points = new ArrayList<TridimensionalPoint<Double>>();
+        this.points = new ArrayList<>();
     }
 
     @Override
-    public List<TridimensionalPoint<Double>> points() {
+    public List<TridimensionalPoint> points() {
         return points;
     }
 }

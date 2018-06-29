@@ -5,10 +5,10 @@ import com.graduation.oop.space.Space;
 
 import java.util.List;
 
-public class UnidimensionalSpace implements Space<UnidimensionalPoint<Double>> {
-    private List<UnidimensionalPoint<Double>> points;
+public class UnidimensionalSpace implements Space<UnidimensionalPoint> {
+    private List<UnidimensionalPoint> points;
 
-    public UnidimensionalSpace(List<UnidimensionalPoint<Double>> points) {
+    public UnidimensionalSpace(List<UnidimensionalPoint> points) {
         this.points = points;
     }
 
@@ -17,7 +17,7 @@ public class UnidimensionalSpace implements Space<UnidimensionalPoint<Double>> {
     }
 
     @Override
-    public List<UnidimensionalPoint<Double>> points() {
+    public List<UnidimensionalPoint> points() {
         return points;
     }
 }

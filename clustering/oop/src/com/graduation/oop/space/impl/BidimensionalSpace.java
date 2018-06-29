@@ -6,10 +6,10 @@ import com.graduation.oop.space.Space;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BidimensionalSpace implements Space<BidimensionalPoint<Double>> {
-    private List<BidimensionalPoint<Double>> points;
+public class BidimensionalSpace implements Space<BidimensionalPoint> {
+    private List<BidimensionalPoint> points;
 
-    public BidimensionalSpace(List<BidimensionalPoint<Double>> points) {
+    public BidimensionalSpace(List<BidimensionalPoint> points) {
         this.points = points;
     }
 
@@ -18,7 +18,7 @@ public class BidimensionalSpace implements Space<BidimensionalPoint<Double>> {
     }
 
     @Override
-    public List<BidimensionalPoint<Double>> points() {
+    public List<BidimensionalPoint> points() {
         return points;
     }
 }
