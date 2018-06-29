@@ -2,7 +2,7 @@ package functions.core
 
 import data.representation.{BidimensionalPoint, Cluster, TridimensionalPoint, UnidimensionalPoint}
 
-trait CentroidCalculator[A, P[_], C[_, _]] {
+trait CentroidCalculator[A, P[_], C[_, _[_]]] {
   def computeCentroid(cluster: C[A, P]): P[A]
 }
 

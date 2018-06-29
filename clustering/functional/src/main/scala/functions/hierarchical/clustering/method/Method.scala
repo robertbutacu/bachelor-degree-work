@@ -15,10 +15,10 @@ object Method {
 
   object ops {
 
-    implicit class MethodOps(method: MethodType) {
+    implicit class MethodOps[MT <: MethodType](method: MT) {
       def formCluster[A, P[_], D](clusters: List[Cluster[A, P]], distanceType: D)
                                  (implicit distance: DistanceCalculator[A, P, D]): NewCluster[A, P] = {
-        Method[A, P, D, MethodType].formCluster(clusters, distanceType, method)
+        Method[A, P, D, MT].formCluster(clusters, distanceType, method)
       }
     }
 

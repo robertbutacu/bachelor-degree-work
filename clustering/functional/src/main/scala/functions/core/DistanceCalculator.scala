@@ -8,7 +8,7 @@ trait DistanceCalculator[A, P[_], D] {
 }
 
 object DistanceCalculator {
-  implicit def unidimensionalPointCalculator[D: DistanceType]: DistanceCalculator[Double, UnidimensionalPoint, D] =
+  implicit def unidimensionalPointCalculator[D <: DistanceType]: DistanceCalculator[Double, UnidimensionalPoint, D] =
     (A: UnidimensionalPoint[Double], B: UnidimensionalPoint[Double], distanceType: D) => {
       distanceType match {
         case EuclideanDistance => Math.sqrt(Math.pow(A.X - B.X, 2))
@@ -17,7 +17,7 @@ object DistanceCalculator {
       }
     }
 
-  implicit def bidimensionalPointCalculator[D: DistanceType]: DistanceCalculator[Double, BidimensionalPoint, D] =
+  implicit def bidimensionalPointCalculator[D <: DistanceType]: DistanceCalculator[Double, BidimensionalPoint, D] =
     (A: BidimensionalPoint[Double], B: BidimensionalPoint[Double], distanceType: D) => {
       distanceType match {
         case EuclideanDistance => Math.sqrt(Math.pow(A.X - B.X, 2) + Math.pow(A.Y - B.Y, 2))
@@ -26,7 +26,7 @@ object DistanceCalculator {
       }
     }
 
-  implicit def tridimensionalPointCalculator[D: DistanceType]: DistanceCalculator[Double, TridimensionalPoint, D] =
+  implicit def tridimensionalPointCalculator[D <: DistanceType]: DistanceCalculator[Double, TridimensionalPoint, D] =
     (A: TridimensionalPoint[Double], B: TridimensionalPoint[Double], distanceType: D) => {
       distanceType match {
         case EuclideanDistance => Math.sqrt(Math.pow(A.X - B.X, 2) + Math.pow(A.Y - B.Y, 2) + Math.pow(A.Z - B.Z, 2))
