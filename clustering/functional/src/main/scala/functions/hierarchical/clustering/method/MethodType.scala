@@ -2,6 +2,6 @@ package functions.hierarchical.clustering.method
 
 trait MethodType
 
-case object SingleLinkage
-case object CompleteLinkage
-case object AverageLinkage
+case class SingleLinkage()
+case class CompleteLinkage()
+case class AverageLinkage()
