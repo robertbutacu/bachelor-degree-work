@@ -1,15 +1,15 @@
 package functions.hierarchical.clustering.method
 
 import data.representation.{Cluster, NewCluster}
-import functions.core.{CentroidCalculator, DistanceCalculator}
+import functions.core.DistanceCalculator
+import functions.core.CentroidCalculator.ops.CentroidOps
 
 object Methods {
   implicit def singleLinkageMethod[A: Numeric, P[_], D]: Method[A, P, D, SingleLinkage] = new Method[A, P, D, SingleLinkage] {
     override def formCluster(clusters: List[Cluster[A, P]],
                              distanceType: D,
                              methodType: SingleLinkage)
-                            (implicit distance: DistanceCalculator[A, P, D],
-                             centroidCalculator: CentroidCalculator[A, P, Cluster]): NewCluster[A, P] = {
+                            (implicit distance: DistanceCalculator[A, P, D]): NewCluster[A, P] = {
       def shortestDistance(current: Cluster[A, P], other: Cluster[A, P]): A = {
         val distancesBetweenAllPoints = for {
           currentPoint <- current.points
@@ -32,10 +32,9 @@ object Methods {
     override def formCluster(clusters: List[Cluster[A, P]],
                              distanceType: D,
                              methodType: AverageLinkage)
-                            (implicit distance: DistanceCalculator[A, P, D],
-                             centroidCalculator: CentroidCalculator[A, P, Cluster]): NewCluster[A, P] = {
-      def createCentroid(cluster: Cluster[A, P])(implicit centroidCalculator: CentroidCalculator[A, P, Cluster]): P[A] = {
-        centroidCalculator.computeCentroid(cluster)
+                            (implicit distance: DistanceCalculator[A, P, D]): NewCluster[A, P] = {
+      def createCentroid(cluster: Cluster[A, P]): P[A] = {
+        cluster.computeCentroid()
       }
 
       def computeDistance(from: (Cluster[A, P], P[A]),
@@ -59,8 +58,7 @@ object Methods {
     override def formCluster(clusters: List[Cluster[A, P]],
                              distanceType: D,
                              methodType: CompleteLinkage)
-                            (implicit distance: DistanceCalculator[A, P, D],
-                             centroidCalculator: CentroidCalculator[A, P, Cluster]): NewCluster[A, P] = {
+                            (implicit distance: DistanceCalculator[A, P, D]): NewCluster[A, P] = {
       def shortestDistance(current: Cluster[A, P], other: Cluster[A, P]): A = {
 
         val distancesBetweenAllPoints = for {

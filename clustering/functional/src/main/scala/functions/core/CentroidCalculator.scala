@@ -7,13 +7,13 @@ trait CentroidCalculator[A, P[_], C[_, _]] {
 }
 
 object CentroidCalculator {
-  object obs {
-    implicit class CentroidOps[P[_]](cluster: Cluster[Double, P]) {
-      def computeCentroid(): P[Double] = CentroidCalculator[P].computeCentroid(cluster)
+  object ops {
+    implicit class CentroidOps[A: Numeric, P[_]](cluster: Cluster[A, P]) {
+      def computeCentroid(): P[A] = CentroidCalculator[A, P].computeCentroid(cluster)
     }
   }
 
-  def apply[P[_]](implicit cc: CentroidCalculator[Double, P, Cluster]) = cc
+  def apply[A: Numeric, P[_]](implicit cc: CentroidCalculator[A, P, Cluster]) = cc
 
   implicit def unidimensionalPointsCentroid: CentroidCalculator[Double, UnidimensionalPoint, Cluster] =
     (cluster: Cluster[Double, UnidimensionalPoint]) => {
