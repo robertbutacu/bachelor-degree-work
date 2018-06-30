@@ -6,3 +6,4 @@ public interface Point<A> {
     public Point<A> getNeutralPoint();
     public Point<A> clone();
 }
+

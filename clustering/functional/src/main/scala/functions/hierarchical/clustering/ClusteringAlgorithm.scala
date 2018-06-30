@@ -13,8 +13,7 @@ object ClusteringAlgorithm {
                                       method: MethodType)
                                      (implicit distance: DistanceCalculator[A, P, D]): Cluster[A, P] = {
     @tailrec
-    def go(clusters: List[Cluster[A, P]],
-           currentIndex: Int = 0)(implicit distance: DistanceCalculator[A, P, D]): Cluster[A, P] = {
+    def go(clusters: List[Cluster[A, P]], currentIndex: Int = 0): Cluster[A, P] = {
       if (clusters.size == 1)
         clusters.head
       else {
