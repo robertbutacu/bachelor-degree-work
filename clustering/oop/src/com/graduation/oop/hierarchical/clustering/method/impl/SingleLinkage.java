@@ -11,21 +11,23 @@ import java.util.List;
 
 public class SingleLinkage implements ClusteringMethod {
     @Override
-    public NewCluster formCluster(List<Cluster> clusters, DistanceCalculator<Double, Point<Double>> distanceCalculator) {
-        List<NewCluster> longestDistanceBetweenClusters = new ArrayList<>();
+    public NewCluster formCluster(List<Cluster> clusters,
+                                  DistanceCalculator<Double, Point<Double>> distanceCalculator) {
+        List<NewCluster> shortestDistanceBetweenClusters = new ArrayList<>();
 
         for (Cluster c1 : clusters)
             for (Cluster c2 : clusters) {
                 if (!c1.equals(c2))
-                    longestDistanceBetweenClusters.add(new NewCluster(c1, c2, c1.shortestDistance(c2, distanceCalculator)));
+                    shortestDistanceBetweenClusters
+                            .add(new NewCluster(c1, c2, c1.shortestDistance(c2, distanceCalculator)));
             }
 
-        Double maxDistance = Double.MIN_VALUE;
+        Double minDistance = Double.MAX_VALUE;
         NewCluster result = new NewCluster();
 
-        for(NewCluster nw: longestDistanceBetweenClusters){
-            if(nw.getDistanceBetween() > maxDistance){
-                maxDistance = nw.getDistanceBetween();
+        for (NewCluster nw : shortestDistanceBetweenClusters) {
+            if (nw.getDistanceBetween() < minDistance) {
+                minDistance = nw.getDistanceBetween();
                 result = nw;
             }
         }

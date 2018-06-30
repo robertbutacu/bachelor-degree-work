@@ -20,7 +20,7 @@ public class BidimensionalPoint implements Point<Double> {
 
     @Override
     public Point<Double> computeCentroid(Point<Double> another) {
-        if(!(another instanceof BidimensionalPoint))
+        if (!(another instanceof BidimensionalPoint))
             throw new IllegalArgumentException("Can't compare Bidimensional point with non-bidimensional point!");
 
         BidimensionalPoint casted = (BidimensionalPoint) another;
@@ -34,6 +34,11 @@ public class BidimensionalPoint implements Point<Double> {
     @Override
     public Point<Double> getNeutralPoint() {
         return new BidimensionalPoint(0.0, 0.0, "");
+    }
+
+    @Override
+    public Point<Double> clone() {
+        return new BidimensionalPoint(this.X, this.Y, this.name);
     }
 
     public Double getX() {

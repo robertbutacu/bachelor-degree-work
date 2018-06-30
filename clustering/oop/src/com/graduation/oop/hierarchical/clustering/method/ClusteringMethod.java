@@ -8,6 +8,5 @@ import com.graduation.oop.point.Point;
 import java.util.List;
 
 public interface ClusteringMethod {
-    //TODO use factory to instantiate the distance calculator
     public NewCluster formCluster(List<Cluster> clusters, DistanceCalculator<Double, Point<Double>> distanceCalculator);
 }

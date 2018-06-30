@@ -22,7 +22,7 @@ public class TridimensionalPoint implements Point<Double> {
 
     @Override
     public Point<Double> computeCentroid(Point<Double> another) {
-        if(!(another instanceof TridimensionalPoint))
+        if (!(another instanceof TridimensionalPoint))
             throw new IllegalArgumentException("Cannot get centroid with non-tridimensional point!");
 
         TridimensionalPoint casted = (TridimensionalPoint) another;
@@ -36,6 +36,11 @@ public class TridimensionalPoint implements Point<Double> {
     @Override
     public Point<Double> getNeutralPoint() {
         return new TridimensionalPoint(0.0, 0.0, 0.0, "");
+    }
+
+    @Override
+    public Point<Double> clone() {
+        return new TridimensionalPoint(this.X, this.Y, this.Z, this.name);
     }
 
     public Double getX() {

@@ -13,7 +13,6 @@ object ClusteringAlgorithm {
                                      (implicit distance: DistanceCalculator[A, P, D]): Cluster[A, P] = {
     @tailrec
     def go(clusters: List[Cluster[A, P]],
-           method: MethodType,
            currentIndex: Int = 0)(implicit distance: DistanceCalculator[A, P, D]): Cluster[A, P] = {
       if (clusters.size == 1)
         clusters.head
@@ -23,14 +22,12 @@ object ClusteringAlgorithm {
         def isMergedIntoANewCluster(c: Cluster[A, P]) = c == next.first || c == next.second
 
         def updateClusters(): List[Cluster[A, P]] =
-          clusters.filterNot(isMergedIntoANewCluster) ++ List(NewCluster.createCluster(next, currentIndex))
+          clusters.filterNot(isMergedIntoANewCluster) :+ NewCluster.createCluster(next, currentIndex)
 
-        go(updateClusters(),
-          method,
-          currentIndex + 1)
+        go(updateClusters(), currentIndex + 1)
       }
     }
 
-    go(clusters, method)
+    go(clusters)
   }
 }

@@ -7,6 +7,8 @@ public class Euclidian3DDistance implements DistanceCalculator<Double, Tridimens
 
     @Override
     public Double computeDistance(TridimensionalPoint A, TridimensionalPoint B) {
-        return Math.sqrt(Math.pow(A.getX() - B.getX(), 2) + Math.pow(A.getY() - B.getY(), 2) + Math.pow(A.getZ() - B.getZ(), 2));
+        return Math.sqrt(Math.pow(A.getX() - B.getX(), 2)
+                + Math.pow(A.getY() - B.getY(), 2)
+                + Math.pow(A.getZ() - B.getZ(), 2));
     }
 }

@@ -19,7 +19,7 @@ public class UnidimensionalPoint implements Point<Double> {
 
     @Override
     public Point<Double> computeCentroid(Point<Double> another) {
-        if(!(another instanceof UnidimensionalPoint))
+        if (!(another instanceof UnidimensionalPoint))
             throw new IllegalArgumentException("Cannot compute distance to a non-unidimensional point!");
 
         UnidimensionalPoint casted = (UnidimensionalPoint) another;
@@ -29,6 +29,11 @@ public class UnidimensionalPoint implements Point<Double> {
     @Override
     public Point<Double> getNeutralPoint() {
         return new UnidimensionalPoint(0.0, "");
+    }
+
+    @Override
+    public Point<Double> clone() {
+        return new UnidimensionalPoint(this.X, this.name);
     }
 
     public Double getX() {
