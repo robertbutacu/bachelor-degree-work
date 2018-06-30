@@ -24,5 +24,5 @@ object Method {
 
   }
 
-  def apply[A, P[_], D, M](implicit method: Method[A, P, D, M]) = method
+  def apply[A, P[_], D, M](implicit method: Method[A, P, D, M]): Method[A, P, D, M] = method
 }

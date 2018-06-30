@@ -1,9 +1,10 @@
 package functions.hierarchical.clustering
 
 import data.representation.{Cluster, NewCluster}
-import functions.core.{CentroidCalculator, DistanceCalculator}
-import functions.hierarchical.clustering.method.{Method, MethodType}
-import Method.ops.MethodOps
+import functions.core.DistanceCalculator
+import functions.hierarchical.clustering.method.Method.ops.MethodOps
+import functions.hierarchical.clustering.method.MethodType
+
 import scala.annotation.tailrec
 
 object ClusteringAlgorithm {
