@@ -5,8 +5,8 @@ import functions.core.DistanceCalculator
 import functions.core.CentroidCalculator.ops._
 
 object Methods {
-  implicit def singleLinkageMethod[A: Numeric, P[_], D]: Method[A, P, D, SingleLinkage] =
-    new Method[A, P, D, SingleLinkage] {
+  implicit def singleLinkageMethod[A: Numeric, P[_], D, Cluster[_, _[_]]]: Method[A, P, D, SingleLinkage, Cluster] =
+    new Method[A, P, D, SingleLinkage, Cluster] {
       override def formCluster(clusters: List[Cluster[A, P]],
                                distanceType: D,
                                methodType: SingleLinkage)
@@ -29,7 +29,7 @@ object Methods {
       }
     }
 
-  implicit def averageLinkageMethod[A: Numeric, P[_], D]: Method[A, P, D, AverageLinkage] =
+  implicit def averageLinkageMethod[A: Numeric, P[_], D, Cluster[_, _[_]]: Method[A, P, D, AverageLinkage, Cluster] =
     new Method[A, P, D, AverageLinkage] {
       override def formCluster(clusters: List[Cluster[A, P]],
                                distanceType: D,
@@ -47,7 +47,7 @@ object Methods {
       }
     }
 
-  implicit def completeLinkageMethod[A: Numeric, P[_], D]: Method[A, P, D, CompleteLinkage] =
+  implicit def completeLinkageMethod[A: Numeric, P[_], D, Cluster[_, _[_]]]: Method[A, P, D, CompleteLinkage, Cluster] =
     new Method[A, P, D, CompleteLinkage] {
       override def formCluster(clusters: List[Cluster[A, P]],
                                distanceType: D,
